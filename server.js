@@ -36,6 +36,7 @@ db.sequelize.sync();
 // Routes
 require("./app/routes/post.route")(app);
 require("./app/routes/seller.route")(app);
+require("./app/routes/auth.route")(app);
 
 // simple route
 app.get("/api", (req, res) => {
