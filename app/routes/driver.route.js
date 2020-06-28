@@ -1,38 +1,38 @@
 module.exports = (app) => {
-  const sellers = require("../controllers/seller.controller.js");
+  const drivers = require("../controllers/driver.controller.js");
   const AuthValidationMiddleware = require("../middlewares/auth.validation.middleware");
 
   let router = require("express").Router();
 
-  // Create a new seller regis
-  router.post("/register", sellers.register);
+  // Create a new driver regis
+  router.post("/register", drivers.register);
 
-  // Retrieve all sellers
-  router.get("/", [AuthValidationMiddleware.validJWTNeeded, sellers.findAll]);
+  // Retrieve all drivers
+  router.get("/", [AuthValidationMiddleware.validJWTNeeded, drivers.findAll]);
 
-  // Retrieve single seller
+  // Retrieve single driver
   router.get("/:id", [
     AuthValidationMiddleware.validJWTNeeded,
-    sellers.findOne,
+    drivers.findOne,
   ]);
 
-  // Update seller
+  // Update driver
   router.patch("/:id", [
     AuthValidationMiddleware.validJWTNeeded,
-    sellers.update,
+    drivers.update,
   ]);
 
-  // Delete single seller
+  // Delete single driver
   router.delete("/:id", [
     AuthValidationMiddleware.validJWTNeeded,
-    sellers.delete,
+    drivers.delete,
   ]);
 
-  // Delete All seller
+  // Delete All driver
   router.delete("/", [
     AuthValidationMiddleware.validJWTNeeded,
-    sellers.deleteAll,
+    drivers.deleteAll,
   ]);
 
-  app.use("/api/sellers", router);
+  app.use("/api/drivers", router);
 };

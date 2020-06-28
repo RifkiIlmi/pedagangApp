@@ -12,7 +12,9 @@ exports.login = (req, res) => {
       .update(refreshId)
       .digest("base64");
     req.body.refreshKey = salt;
-    let token = jwt.sign(req.body, jwtSecret);
+    let token = jwt.sign(req.body, jwtSecret, {
+      expiresIn: 86400, // expires in 24 hours
+    });
     let b = new Buffer(hash);
     let refresh_token = b.toString("base64");
     res.status(201).send({ accessToken: token, refreshToken: refresh_token });

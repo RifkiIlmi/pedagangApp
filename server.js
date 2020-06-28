@@ -34,9 +34,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 db.sequelize.sync();
 
 // Routes
-require("./app/routes/post.route")(app);
-require("./app/routes/seller.route")(app);
 require("./app/routes/auth.route")(app);
+require("./app/routes/seller.route")(app);
+require("./app/routes/driver.route")(app);
+require("./app/routes/customer.route")(app);
+require("./app/routes/market.route")(app);
+require("./app/routes/category.route")(app);
+require("./app/routes/product.route")(app);
+require("./app/routes/pcomment.route")(app);
+require("./app/routes/rating.route")(app);
+require("./app/routes/cart.route")(app);
+require("./app/routes/order.route")(app);
 
 // simple route
 app.get("/api", (req, res) => {
